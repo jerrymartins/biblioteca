@@ -25,7 +25,7 @@ class AutorController extends Controller
             'nome' => 'required|max:20|min:3',
             'sobreNome' => 'required|max:20|min:3',
             'data_nascimento' => 'required|date',
-            'titulo' => 'required|unique:posts',
+            'titulo' => 'required',
             'data_publicacao' => 'required|date'
         ];
 
@@ -92,12 +92,11 @@ class AutorController extends Controller
         return redirect('/autores');
     }
 
-    public function deleta(Request $request)
+    public function deleta($id)
     {
-        $autor = $this->getAutor($request->id);        
+        $autor = $this->getAutor($id);        
         $autor->delete();
         return redirect('/autores');
-        
     }
 
     public function busca(Request $request)
