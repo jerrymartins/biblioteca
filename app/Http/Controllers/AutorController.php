@@ -42,7 +42,7 @@ class AutorController extends Controller
 
     public function index()
     {
-        $list_autores = Autor::paginate(2);
+        $list_autores = Autor::paginate(4);
         return view( 'autores.index', ['autores' => $list_autores] );
 
     }
@@ -94,11 +94,15 @@ class AutorController extends Controller
 
     public function deleta(Request $request)
     {
-        $autor = $this->getAutor($request->id);
-        //var_dump($autor);
-        
+        $autor = $this->getAutor($request->id);        
         $autor->delete();
         return redirect('/autores');
         
+    }
+
+    public function busca(Request $request)
+    {
+        $autores = Autor::where('nome', 'LIKE', '%'.$request->criterio.'%')->paginate(4);
+        return view('autores.index', ['autores' => $autores]);
     }
 }
