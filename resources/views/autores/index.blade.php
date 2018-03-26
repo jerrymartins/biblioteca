@@ -1,6 +1,15 @@
 @extends("templates.app")
 
 @section("content")
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand"></a>
+    <form class="form-inline" action="{{ url('autores/busca') }}" method="post">
+      {{ csrf_field() }}
+      <input class="form-control mr-sm-2" name="criterio" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+
   <div class="row">
     @foreach($autores as $autor)
     <div class="col-md-3 m-1 ml-4">
