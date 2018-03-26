@@ -24,3 +24,10 @@ Route::group(['prefix' => 'autores'], function () {
     Route::get("/deleta/{id}", "AutorController@deleta");
 
 });
+
+Route::group(['prefix' => 'livros'], function () {
+    Route::get("/novoLivro/{id}", "LivroController@cadastroLivroView");
+    Route::post("/salvaLivro", "LivroController@novoLivro");
+    
+
+});
