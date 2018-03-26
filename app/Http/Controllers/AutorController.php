@@ -43,7 +43,7 @@ class AutorController extends Controller
         return redirect("/autores/cadastro")->with('message', 'autor cadastrado');
     }
 
-    public function edita($id)
+    public function editaView($id)
     {
         return view('autores.edit', [
             'autor' => $this->getAutor($id)
@@ -60,5 +60,15 @@ class AutorController extends Controller
         $autor = $this->getAutor($request->id);
         $autor->update($request->all());
         return redirect('/autores');
+    }
+
+    public function deleta(Request $request)
+    {
+        $autor = $this->getAutor($request->id);
+        //var_dump($autor);
+        
+        $autor->delete();
+        return redirect('/autores');
+        
     }
 }
