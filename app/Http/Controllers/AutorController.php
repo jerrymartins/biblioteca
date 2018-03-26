@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Autor;
 use App\Livro;
 
@@ -41,8 +42,9 @@ class AutorController extends Controller
 
     public function index()
     {
-        $list_autores = Autor::all();
+        $list_autores = Autor::paginate(2);
         return view( 'autores.index', ['autores' => $list_autores] );
+
     }
 
     public function cadastroView()
