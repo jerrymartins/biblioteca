@@ -19,7 +19,7 @@
         </div>
         <div class="float-right">
           <button type="submit" class="btn btn-primary">atualizar</button>
-          <button type="button" class="btn btn-danger">apagar</button>
+          <a href="{{ url('autores/deleta/'.$autor->id) }}" class="btn btn-danger">apagar</a>
         </div>
       </form>
   </div>
