@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Autor;
 use App\Livro;
 
@@ -15,6 +16,27 @@ class AutorController extends Controller
     {
         $this->livro_controller = $livro_controller;
         $this->autor = new Autor();
+    }
+
+    public function validacao($data)
+    {
+        $regras = [
+            'nome' => 'required|max:20|min:3',
+            'sobreNome' => 'required|max:20|min:3',
+            'data_nascimento' => 'required|date',
+            'titulo' => 'required|unique:posts',
+            'data_publicacao' => 'required|date'
+        ];
+
+        $mensg = [
+            'nome.required' => 'obrigatório informar o nome do autor',
+            'nome.max' => 'limite do tamanho do nome excedido',
+            'SobreNome.required' => 'obrigatório informar o sobrenome do autor',
+            'SobreNome.max' => 'limite do tamanho do sobrenome excedido',
+            'data_nascimento.required' => 'infome a data de nascimento'
+        ];
+
+        return Validator::make($data, $regras, $mensg);
     }
 
     public function index()
@@ -30,6 +52,12 @@ class AutorController extends Controller
 
     public function armazena(Request $request)
     {
+        $validacao = $this->validacao($request->all());
+
+        if ($validacao->fails()) {
+            return redirect()->back()->withErrors($validacao->errors())->withInput($request->all());
+        }
+
         $autor = Autor::create($request->all());
         
         if($request->titulo && $request->data_publicacao) {
