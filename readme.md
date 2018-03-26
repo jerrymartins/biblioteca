@@ -1,3 +1,5 @@
-Atualmente apenas o cadastro e a listagem de autores e livros estão disponíveis.
+1 - Lista todos os autores cadastrados com todos os campos do banco, com paginação e um
+campo para pesquisa
 
-eu considero o caso em que um livro é escrito por apenas um autor, mas um autor pode escrever vários livros.
+2 - Lista todos os livros cadastrados com todos os campos do banco, inclusive o nome do autor, com
+paginação e um campo para pesquisa por titulo e por autor.
