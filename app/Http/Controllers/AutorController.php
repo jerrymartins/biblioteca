@@ -46,7 +46,7 @@ class AutorController extends Controller
     public function edita($id)
     {
         return view('autores.edit', [
-            'autor' => getAutor($id)
+            'autor' => $this->getAutor($id)
         ]);
     }
 
