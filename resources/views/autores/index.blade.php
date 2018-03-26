@@ -26,7 +26,7 @@
     </div>
   @endforeach
   </div>
-  <div>
+  <div class="d-flex justify-content-center"">
       {{ $autores->links() }}
   </div>
 @endsection
