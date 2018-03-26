@@ -55,8 +55,10 @@ class AutorController extends Controller
         return $this->autor->find($id);
     }
 
-    public function atualiza()
+    public function atualiza(Request $request)
     {
-        return view("working");
+        $autor = $this->getAutor($request->id);
+        $autor->update($request->all());
+        return redirect('/autores');
     }
 }
