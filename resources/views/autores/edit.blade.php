@@ -17,6 +17,9 @@
           <label for="idDataNasc">Data Nascimento</label>
           <input type="date" id="idDataNasc" name="data_nascimento" class="form-control" value="{{$autor->data_nascimento}}">
         </div>
+        <div class="float-left">
+          <a onclick="window.history.go(-1);" class="btn btn-info text-white">cancelar</a>
+        </div>
         <div class="float-right">
           <button type="submit" class="btn btn-primary">atualizar</button>
           <a href="{{ url('autores/deleta/'.$autor->id) }}" class="btn btn-danger">apagar</a>
