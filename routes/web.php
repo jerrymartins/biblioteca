@@ -19,7 +19,8 @@ Route::group(['prefix' => 'autores'], function () {
     Route::get("/", "AutorController@index");
     Route::get("/cadastro", "AutorController@cadastroView");
     Route::post("/salva", "AutorController@armazena");
-    Route::get("/edita/{id}", "AutorController@edita");
+    Route::get("/edita/{id}", "AutorController@editaView");
     Route::post("/atualiza", "AutorController@atualiza");
+    Route::get("/deleta/{id}", "AutorController@deleta");
 
 });
