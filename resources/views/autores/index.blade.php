@@ -17,4 +17,7 @@
     </div>
   @endforeach
   </div>
+  <div>
+      {{ $autores->links() }}
+  </div>
 @endsection
