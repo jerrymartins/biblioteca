@@ -23,4 +23,9 @@ class Autor extends Model
         return $this->hasMany(Livro::class, 'id_autor');
     }
 
+    static function busca($criterio)
+    {
+        return static::where('nome', 'LIKE', '%'.$criterio.'%')->paginate(4);
+    }
+
 }

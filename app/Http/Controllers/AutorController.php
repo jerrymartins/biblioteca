@@ -102,7 +102,7 @@ class AutorController extends Controller
 
     public function busca(Request $request)
     {
-        $autores = Autor::where('nome', 'LIKE', '%'.$request->criterio.'%')->paginate(4);
+        $autores = Autor::busca($request->criterio);
         return view('autores.index', ['autores' => $autores]);
     }
 }
